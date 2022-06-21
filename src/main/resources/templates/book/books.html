@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <title>도서 목록</title>
+</head>
+<body>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>도서 목록</h2>
+    </div>
+
+    <table class="table table-striped">
+        <th>Seq</th>
+        <th>도서명</th>
+        <th>가격</th>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}">1</td>
+            <td><a href="book.html" th:href="@{|/book/${book.id}|}" th:text="${book.name}">도서명</a></td>
+            <td th:text="${book.price}">1000</td>
+        </tr>
+    </table>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-lg btn-danger"
+                    onclick="location.href='index.html'"
+                    th:onclick="|location.href='@{/index.html}'|"
+                    type="button">홈으로</button>
+        </div>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
